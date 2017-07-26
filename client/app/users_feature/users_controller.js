@@ -3,9 +3,9 @@
         .module("APP_MODULE")
         .controller("UsersCtrl", UsersCtrl);
 
-    UsersCtrl.$inject = ['$filter', '$window', '$state', '$stateParams', "UsersService", "Upload"];
+    UsersCtrl.$inject = ["$scope", '$filter', '$window', '$state', '$stateParams', "UsersService", "Upload"];
 
-    function UsersCtrl($filter, $window, $state, $stateParams, UsersService, Upload) {
+    function UsersCtrl($scope, $filter, $window, $state, $stateParams, UsersService, Upload) {
         var vm = this;
 
         // Exposed to view: data models ----------------
@@ -13,10 +13,10 @@
         vm.clickCancel = clickCancel;
         vm.clickUploadPicture = clickUploadPicture;
         vm.readFile = readFile;
-        vm.cancelImageSelection=cancelImageSelection;
-        vm.resultDisplay=resultDisplay;
+        vm.cancelImageSelection = cancelImageSelection;
+        vm.resultDisplay = resultDisplay;
         vm.roleslist = ["Student", "Training Coordinator"];
-        vm.vanilla=1;
+        vm.vanilla = 1;
         vm.expand = false;
         vm.selectedFile = "";
 
@@ -36,38 +36,38 @@
         function clickCreate() {
             console.log("clickCreate()");
             // construct payload
-            var payload={};
-            payload.userId       = null; // autoincrementing
-			payload.firstName    = vm.firstName;
-            payload.lastName     = vm.lastName;
-            if (vm.role==0) { //student
-                payload.isTc         = 0;    
+            var payload = {};
+            payload.userId = null; // autoincrementing
+            payload.firstName = vm.firstName;
+            payload.lastName = vm.lastName;
+            if (vm.role == 0) { //student
+                payload.isTc = 0;
             } else { // training coordinator
-                payload.isTc         = 1;    
+                payload.isTc = 1;
             }
-			payload.isCc         = 0;
-			payload.isS          = 1;
-			payload.isB          = 0;
-			payload.isAdmin      = 0;
-			payload.email        = vm.email;
-			payload.mobile       = vm.mobile;
-			payload.jobTitle     = vm.jobTitle;
-			payload.department   = vm.department;
-			payload.billingId    = 1;
-			payload.picturePath  = "";
-			payload.pictureBlob  = vm.image;
-			payload.expertise    = vm.expertise;
-			payload.isActive     = 1;
+            payload.isCc = 0;
+            payload.isS = 1;
+            payload.isB = 0;
+            payload.isAdmin = 0;
+            payload.email = vm.email;
+            payload.mobile = vm.mobile;
+            payload.jobTitle = vm.jobTitle;
+            payload.department = vm.department;
+            payload.billingId = 1;
+            payload.picturePath = "";
+            payload.pictureBlob = vm.image;
+            payload.expertise = vm.expertise;
+            payload.isActive = 1;
             payload.passwordHash = my_hash(vm.password);
-            
+
             // send to service
-            p=UsersService.createUser(payload);
-            p.then(function(results) {
+            p = UsersService.createUser(payload);
+            p.then(function (results) {
                 window.alert("Success creating user");
                 console.log("Users controller, cancel clicked, sending to UsersListState");
                 $state.go("UsersListState", { reload: true });
 
-            },function(err) {
+            }, function (err) {
                 window.alert("Error creating user");
             });
         }
@@ -94,11 +94,12 @@
                 showZoomer: true,
                 enableOrientation: true
             });
-            vm.vanilla.bind({url:vm.image});
+            vm.vanilla.bind({ url: vm.image });
         }
 
         function cancelImageSelection() {
-            vm.expand=false;
+            console.log("cancelImageSelection()");
+            vm.expand = false;
             vm.vanilla.destroy();
         }
 
@@ -107,11 +108,15 @@
                 type: 'canvas',
                 size: 'viewport'
             }).then(function (resp) {
-                console.log(resp);
-                vm.image=resp;
-                console.log("image=",resp);
+                // console.log(resp);
+                vm.image = resp;
+                vm.expand = false;
+                console.log("resultDisplay()");
+                $scope.$apply();
                 vm.vanilla.destroy();
-                vm.expand=false;
+                console.log("croppie destroyed");
+            }).catch(function (err) {
+                console.log("err", err);
             });
         }
 

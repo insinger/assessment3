@@ -21,9 +21,13 @@ module.exports = function (app, dbmodels, auth, passport) {
   });
 
   app.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
+    // req.logout();
+    req.session.destroy(function (err) {
+      res.redirect('/');
+      });
   });
+
+
 
   //------------------------------------------------------------
   //
