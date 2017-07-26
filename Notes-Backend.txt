@@ -1,0 +1,39 @@
+Notes for the back end when starting new projects...
+
+
+DATABASE NAME
+-------------
+Update DATABASE_NAME in [config/development.js].
+For production the name should be in environment var. See [config/production.js].
+Other than this it shouldn't be necessary to touch [config/development.js].
+
+For each Database Table
+-----------------------
+Create a Sequelize model, in [models/modelname.js]. Maybe set:
+    timestamps: false,
+	 freezeTableName: true
+Create the tables in the database with the Modelname.sync() method. 
+	Modelname.sync({force:true}) will drop and remake the table.
+Add a sequelize.import() line to [db.js] for each model.
+
+For each REST route
+-------------------
+Add new controller files in [/api] - e.g. [api/controllername.js].
+	The controllers contain create/read/update/destroy/search functions that 
+	carry out the required actions on the database.
+	NB each function has a parameter which is a dictionary with all 
+	sequelize models in it. Make sure to use dbmodels.correct_model.read() etc.
+Add the endpoint in [routes.js].
+  Define an Express GET/PUT/POST/DELETE handler for each endpoint, and
+  connect it to the corresponding controller functions in [/api/controllername.js].
+
+
+SUMMARY
+-------
+app.js                - no need to touch
+config/development.js - only update DATABASE_NAME
+
+models/modelname.js   - for each table/model
+db.js                 - for each table/model
+api/controllername.js - for each table/model/REST resource
+routes.js             - for each table/model/REST resource 

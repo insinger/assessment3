@@ -1,0 +1,153 @@
+<!--Users  Start-->
+<div class="container-fluid">
+    <div class="row">
+        <style>
+            .form-horizontal .control-label {
+                text-align: left;
+            }
+
+            [src=''] {
+                visibility: hidden;
+            }
+        </style>
+
+        <br>
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <!-- FORM -->
+            <form name="UsersForm" class="form-horizontal" ng-submit="ctrl.clickCreate()" novalidate>
+
+                <div class="panel panel-default bootcards-summary">
+                    <div class="panel-heading clearfix" style="text-align:center;">
+                        <h4>User Registration</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">First Name</label>
+                            <div class="col-xs-9">
+                                <input type="text" ng-model="ctrl.firstName" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Last Name</label>
+                            <div class="col-xs-9">
+                                <input type="text" ng-model="ctrl.lastName" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="roleselect" class="col-xs-3 control-label">Role</label>
+                            <div class="col-xs-9">
+                                <select name="roleselect" ng-model="ctrl.role">
+                                            <option ng-repeat="r in ctrl.roleslist" ng-value="$index">
+                                                {{r}}
+                                            </option>
+                                        </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Email</label>
+                            <div class="col-xs-9">
+                                <input type="text" ng-model="ctrl.email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Mobile</label>
+                            <div class="col-xs-9">
+                                <input type="text" ng-model="ctrl.mobile" class="form-control" placeholder="Mobile">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Job Title</label>
+                            <div class="col-xs-9">
+                                <input type="text" ng-model="ctrl.jobTitle" class="form-control" placeholder="Job Title">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Department</label>
+                            <div class="col-xs-9">
+                                <input type="text" ng-model="ctrl.department" class="form-control" placeholder="Department">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Picture</label>
+                            <div class="col-xs-4">
+                                <img ng-src="{{ctrl.image}}" style="height:100px;width:100px;">
+                            </div>
+                            <div class="col-xs-3">
+                                 <button type="button" class="btn btn-success" ng-click="ctrl.clickUploadPicture()"> 
+                                            <i class="fa fa-camera"></i>
+                                            Upload Picture
+                                        </button>
+                            </div>
+                        </div>
+
+                        <div id="test" ng-show="ctrl.expand">
+                            <!-- image upload -->
+                            <!-- XXX -->
+                            <div class="col-xs-3">
+                            </div>
+
+                            <div class="col-xs-9" style="height: 500px; width:100%;">
+                                <!-- Croppie goes here -->
+                                <div>
+                                    <img id="croppy-image" ng-model="vm.image">
+                                </div>
+                                <!-- <p>Message:{{ctrl.selectedFile}}</p> -->
+                                <div style="display:flex;justify-content:space-between;">
+                                    <div class="button btn btn-primary" ng-model="ctrl.selectedFile" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'"
+                                        ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}" ngf-select="ctrl.readFile($file)">
+                                        Choose File
+                                    </div>
+
+                                    <button type="button" id="cancelbtn" ng-click="ctrl.cancelImageSelection()" class="btn btn-danger">
+                                                <span>Cancel</span>
+                                            </button>
+                                    <button type="button" id="acceptbtn" ng-click="ctrl.resultDisplay()" class="btn btn-success">
+                                                <span>Accept</span>
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- image upload -->
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Expertise</label>
+                            <div class="col-xs-9">
+                                <input type="text" ng-model="ctrl.expertise" class="form-control" placeholder="Expertise">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Password</label>
+                            <div class="col-xs-9">
+                                <input type="password" ng-model="ctrl.password" class="form-control" placeholder="password">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="panel-footer">
+                        <div class="btn-group" style="display:flex; align-items:flex-end; justify-content:space-between">
+                            <button type="button" class="btn btn-danger" ng-click="ctrl.clickCancel()">
+                                        <i class="fa fa-times"></i>
+                                        Cancel
+                                    </button>
+                            <button type="submit" ng-disabled="UsersForm.$invalid" class="btn btn-success">
+                                        <i class="fa fa-check"></i>
+                                        Create
+                                    </button>
+                        </div>
+                        <!-- btn-group -->
+                    </div>
+                    <!-- panel footer -->
+
+                </div>
+                <!-- modal body -->
+            </form>
+        </div>
+        <!-- col-sm-6 -->
+        <div class="col-sm-3">
+        </div>
+
+
+    </div>
+    <!-- Users end  -->

@@ -1,0 +1,101 @@
+<!--UsersList  Start-->
+<div class="container-fluid">
+    <div class="row">
+        <style>
+            .list-group-item .xcontainer {
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            .list-group-item .ximage {
+                margin-left: 15px;
+                flex-basis: 75px;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+            .list-group-item .xmain {
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-basis: 40%;
+                margin-left: 10px;
+            }
+
+            .list-group-item .xdetail {
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-basis: 40%;
+                border: 0px solid green;
+                margin-right: 20px;
+                margin-left: 10px;
+            }
+        </style>
+        <div class="col-md-4">
+            <div class="bootcards-list">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search Contacts...">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="button" ng-click="ctrl.clickAdd()" class="form-control btn btn-primary btn-block" href="#">
+                                         <i class="fa fa-plus"></i>
+                                         Add
+                                    </button>
+                                </div>
+                                <!-- col-md-4 -->
+                            </div>
+                            <!-- row -->
+                        </form>
+                    </div>
+                    <!-- panel body -->
+                    <div class="list-group bootcards-no-indicators" style="height:300px;overflow-y:auto;">
+                        <!--<div class="list-group" style="height:300px;overflow-y:auto;">-->
+                        <!-- <style>.xcheckbox {display:none;}</style> -->
+                        <a ng-repeat="u in ctrl.userslist" class="list-group-item" href="#">
+                            <label style="display:inline;">
+                                <div class="xcontainer">
+                                        <div class="ximage">
+                                        <input type="checkbox" class="xcheckbox">
+                                        <img ng-src="{{u.pictureBlob}}" class="img-rounded" /> 
+                                    </div>
+                                    <div class="xmain">
+                                        <h4 class="list-group-item-heading">{{u.firstName}}&nbsp;{{u.lastName}}</h4>
+                                        <p class="list-group-item-text">{{u.jobTitle}}</p>
+                                    </div>
+                                    <div class="xdetail">
+                                        <p class="list-group-item-text">{{u.expertise}}</p>
+                                        <!-- <p class="list-group-item-text">Financing</p> -->
+                                    </div>
+                                </div>    
+                            </label>   
+                        </a>
+                    </div>
+                    <!-- list-group -->
+                </div>
+                <!-- panel panel-default -->
+            </div>
+            <!-- bootcards-list -->
+        </div>
+        <!-- col-md-4 -->
+    </div>
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-1">
+            <button type="button" ng-click="ctrl.clickBack()" class="form-control btn btn-primary btn-block" href="#">
+                <i class="fa fa-caret-left"></i>
+                Back
+        </button>
+        </div>
+    </div>
+    <!-- row -->
+</div>
+<!-- container-fluid -->
+
+<!-- UsersList end  -->

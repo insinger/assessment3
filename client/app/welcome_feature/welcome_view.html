@@ -1,0 +1,33 @@
+<!-- Yyy View -->
+<!-- In app.js set $stateProvider.state('YyyState', {url:"/YyyUrl",templateUrl:"/app/yyy_feature/yyy_view.html",controller:'YyyCtrl as ctrl'}); -->
+<!-- In index.html load the controller! -->
+
+<div>
+	<br>
+	<br>
+	<br>
+	<h1>Welcome to Quip!</h1>
+	<br>
+	<br>
+	<h4 ng-if='!ctrl.user'>Please <a ui-sref='LoginState'>login</a> first.</h4>
+	<h3 ng-if='ctrl.user'>Welcome back, {{ctrl.user}}</h3>
+	<button ng-if='ctrl.user' type="button" ng-click="ctrl.proceedClicked()">Proceed</button>
+</div>
+
+
+<!-- <div style="background-color:green;">
+	<br>
+	<br>
+	<br>
+	<h1>Welcome!</h1>
+	<br>
+	<br>
+	<h2>Please Log in to proceed</h2>
+	<br>
+	<br>
+	<h2>Or Register as a new user</h2>
+	<br>
+	<br>
+	<button type="button" ng-click="ctrl.test()">Check if logged in</button>
+</div> -->
+<!-- Xxx View End -->

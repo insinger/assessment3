@@ -1,0 +1,63 @@
+<!--Menu  Start-->
+<div>
+	<style>
+		.panel {
+			user-select:none;
+			-webkit-user-select:none;
+			-ms-user-select:none;
+			-moz-user-select:none;
+		}
+	</style>
+	<div class="panel panel-default bootcards-summary" style="width:100%;-webkit-box-shadow:none;box-shadow:none;border:none;">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-6 col-sm-4">
+				<a class="bootcards-summary-item" ng-click="ctrl.clickProjects()">
+					<i class="fa fa-3x fa-briefcase"></i>
+					<h4>Projects<span class="label label-info">{{ctrl.projectCount}}</span></h4>
+				</a>
+				</div>
+				<div class="col-xs-6 col-sm-4">
+				<a class="bootcards-summary-item" href="#">
+					<i class="fa fa-3x fa-list-alt"></i>
+					<h4>Reports</h4>
+				</a>
+				</div>
+				<div class="col-xs-6 col-sm-4">
+				<a class="bootcards-summary-item" ng-click="ctrl.clickStudents()">
+					<!-- <i class="fa fa-3x fa-user"></i> -->
+					<i class="fa fa-3x fa-id-card-o"></i>
+					<h4>Students</h4>
+				</a>
+				</div>
+				<div class="col-xs-6 col-sm-4">
+				<a class="bootcards-summary-item" href="#">
+					<i class="fa fa-3x fa-users"></i>
+					<h4>Distribution Lists</h4>
+				</a>
+				</div>
+				<div class="col-xs-6 col-sm-4">
+				<a class="bootcards-summary-item" href="#">
+					<i class="fa fa-3x fa-lightbulb-o"></i>
+					<h4>Content Requests<span class="label label-danger">1</span></h4>
+				</a>
+				</div>     
+				<div class="col-xs-6 col-sm-4">
+				<a class="bootcards-summary-item" href="#">
+					<!-- <i class="fa fa-3x fa-check-square-o"></i> -->
+					<i class="fa fa-3x fa-newspaper-o"></i> 
+					<h4>New Lessons<span class="label label-danger">2</span></h4>
+				</a>
+				</div> 
+				<div class="col-xs-6 col-sm-4">
+				<a class="bootcards-summary-item" href="#">
+					<i class="fa fa-3x fa-fast-backward"></i> 
+					<!-- <i class="fa fa-3x fa-archive"></i> -->
+					<h4>Previous Lessons</h4>
+				</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Menu end  -->

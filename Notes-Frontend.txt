@@ -1,0 +1,49 @@
+Frontend Notes
+--------------
+index.html
+	- contains breadbar view HTML & CSS
+	- defines breadcrumb area
+	- defines menu (for login/logout)
+	- defines stash dictionary
+	- the Angular controller for this view is index.js (called IndexCtrl).
+
+index.js
+	- adds the IndexCtrl controller to the main Angular app module.
+	- adds model (vm) to stash dictionary
+	- sets initial state of breadcrumb text
+	- switches view/state in response to menu on breadbar.
+
+app.js
+	- defines main Angular app module
+	- attaches additional modules/directives, incl. ui.router
+	- defines the states/views
+
+
+For each new View
+-----------------
+Create directory [app/viewname_feature]
+	Inside create [viewname_view.html]
+	Inside create [viewname_controller.js]
+		In the controller set the breadcrumb text through the stash dictionary.
+Add line to end of [index.html] to load [viewname_controller.js].
+Add line to end of [app.js] to register the view/state with UI router.
+Create Service if data needs to be persisted/exchanged with back-end.
+	Create functions in [viewname_controller.js] to invoke functions in [viewname_service.js].
+	Inject Service into [viewname_controller.js].
+
+
+For each new Service
+--------------------
+Inside directory [app/services]
+	Create [viewname_service.js]
+		Create functions in [viewname_service.js] to do $http.get/post/put/delete to backend (routes.js).
+Add line to end of [index.html] to load [viewname_service.js].
+
+Summary
+-------
+index.html                          - for each view controller and service
+index.js                            - for each breadbar menu option
+app.js                              - for each new view/state
+app/viewname_feature/viewname.html  - for each new view
+app/viewname_feature/viewname.js    - for each new view
+app/services/viewname_service.js    - for each new service

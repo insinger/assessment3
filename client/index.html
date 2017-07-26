@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="APP_MODULE">
+<head>
+    <meta charset="utf-8">
+    <title>Quip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/bootcards_dist/css/bootcards-desktop.css" rel="stylesheet">
+    <link href="./bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<script src="./bower_components/jquery/dist/jquery.min.js"></script>
+	<script> var stash={chris:"awesome"}; </script>
+</head>
+<body>
+    <!-- Breadbar start  -->
+		<div ng-controller="IndexCtrl as ctrl">
+			<div style="position:fixed;width:100%;top:0px;z-index:1;">
+				<div style="height:50px;padding:0px 15px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;background-color:#f8f8f8;border:1px solid #e7e7e7;text-align:right;">
+						<!-- <div style="display:inline;font&#45;weight:500;font&#45;size:20px;">Quip</div> -->
+						<img src="./assets/logo/logo4.png" style="max-width:40px;max-height:auto; border-radius:5px 5px 0 0;object-fit:contain;">
+						<div style="display:inline;font-weight:500;font-size:18px;text-align:center;">
+							Project <i class="fa fa-caret-right fa" style="padding:0px 5px;color:lightgrey;"></i>{{ctrl.crumb}}
+						</div>
+						<div class="dropdown">
+							<i class="fa fa-user-o fa-2x dropdown-toggle" data-toggle="dropdown"></i>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li ng-repeat="i in ctrl.menuItems"><a ng-click="ctrl.menuClick($index)">{{i}}</a></li>
+							</ul>
+						</div>
+				</div>
+			</div>
+			<div style="height:50px;">
+			</div>
+		</div>
+    <!-- Breadbar end  -->
+
+
+	<!-- views go here -->
+   <ui-view></ui-view>
+
+<!-- JS files for needed dependencies -------------------------------------->
+<!-- Jquery already loaded in head -->
+<!-- Bootstrap -->
+<script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Bootcards -->
+<script src="./assets/bootcards_src/js/bootcards.js"></script>
+<!-- FTLabs FastClick -->
+<script src="./bower_components/fastclick/lib/fastclick.js"></script>
+<script type="text/javascript">
+		// enable Bootcards
+		bootcards.init({ offCanvasBackdrop: true, offCanvasHideOnMainClick: true, enableTabletPortraitMode: true, disableRubberBanding: true, disableBreakoutSelector: 'a.no-break-out' });
+		//enable FastClick
+		window.addEventListener('load', function () {
+			FastClick.attach(document.body);
+		}, false);
+		//activate the sub-menu options in the offcanvas menu
+		$('.collapse').collapse();
+</script>
+<script>
+		// Initialize tooltips
+		$(document).ready(function () {
+			$('[data-toggle="tooltip"]').tooltip({ container: 'body' });
+		});
+</script>
+<!-- Angular -->
+<script src="./bower_components/angular/angular.min.js"></script>
+<!-- Angular-messages -->
+<script src="./bower_components/angular-messages/angular-messages.min.js"></script>
+<!-- Angular-animate -->
+<script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+<!-- Angular-ui-router -->
+<script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<!-- Croppie -->
+<link rel="stylesheet" href="./bower_components/Croppie/croppie.css" />
+<script src="./bower_components/Croppie/croppie.js"></script>
+<!-- ng-upload -->
+<script src="./bower_components/ng-file-upload/ng-file-upload.js"></script>
+
+<!-- JS files for application features ---------------------------------->
+
+<!--Load the js file that contains the APP_MODULE module definition-->
+<!--and the UI-side routes -->
+<script src="app/app.js"></script>
+<!--Load services -->
+	<script src="./app/services/welcome_service.js"></script>
+	<script src="./app/services/menu_service.js"></script>
+	<script src="./app/services/users_service.js"></script>
+	<script src="./app/services/login_service.js"></script>
+    <script src="./app/services/passport.service.js"></script>  
+
+<!--Load controllers -->
+	<script src="index.js"></script> <!-- IndexCtrl controller for this page (index.html) -->
+	<script src="./app/welcome_feature/welcome_controller.js"></script>
+	<script src="./app/menu_feature/menu_controller.js"></script>
+	<script src="./app/users_feature/users_controller.js"></script>
+	<script src="./app/userslist_feature/userslist_controller.js"></script>
+	<script src="./app/login_feature/login_controller.js"></script>
+	<script src="./app/xxx_feature/xxx_controller.js"></script>
+	<script src="./app/yyy_feature/yyy_controller.js"></script>
+</body>
+</html>

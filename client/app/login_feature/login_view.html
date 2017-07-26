@@ -1,0 +1,53 @@
+<!--Users  Start-->
+<div>
+    <style>
+
+    </style>
+    <div class="panel panel-default bootcards-summary" style="width:100%;-webkit-box-shadow:none;box-shadow:none;border:none;">
+        <br>
+        <div class="col-sm-4">
+        </div>
+
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix" style="text-align:center;">
+                    <h4>Log In</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" ng-submit="ctrl.clickLogin()">
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Email</label>
+                            <div class="col-xs-9">
+                                <input ng-model="ctrl.user.email" type="text" class="form-control" placeholder="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Password</label>
+                            <div class="col-xs-9">
+                                <input ng-model="ctrl.user.password" type="password" class="form-control" placeholder="password">
+                            </div>
+                        </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="btn-group" style="display:flex; align-items:flex-end; justify-content:space-between">
+                        <button type="button" ng-click="ctrl.clickCancel()" class="btn btn-danger">
+                        <i class="fa fa-times"></i>
+                        Cancel
+                    </button>
+                        <button type="submit" class="btn btn-success">
+                        <i class="fa fa-lock"></i>
+                        Log In
+                    </button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div ng-if='ctrl.msg' class="alert alert-danger" role="alert"><i class='fa fa-exclamation-triangle'></i> {{ctrl.msg}}</div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+
+    </div>
+</div>
+<!-- Users end  -->
